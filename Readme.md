@@ -57,17 +57,17 @@ echo "Hello from " . ($_SERVER['SERVER_SOFTWARE'] ?? 'unknown server');
 
 4. Run benchmarks from host:
    ```bash
-   wrk -t4 -c100 -d10s http://localhost:8080 # PHP-FPM
+   wrk -t4 -c100 -d10s http://localhost:8080 # Nginx + PHP-FPM
    wrk -t4 -c100 -d10s http://localhost:8081 # FrankenPHP
    ```
    For wrk2:
    ```bash
-   wrk2 -t4 -c100 -d10s -R 5000 http://localhost:8080 # PHP-FPM
+   wrk2 -t4 -c100 -d10s -R 5000 http://localhost:8080 # Nginx + PHP-FPM
    wrk2 -t4 -c100 -d10s -R 5000 http://localhost:8081 # FrankenPHP
    ```
    For k6
    ```bash
-   k6 run k6TestNginx.js # PHP-FPM
+   k6 run k6TestNginx.js # Nginx + PHP-FPM
    k6 run k6TestFrankenPHP.js # FrankenPHP
    ```
 
