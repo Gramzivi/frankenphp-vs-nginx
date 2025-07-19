@@ -1,0 +1,6 @@
+:80 {
+    root * /app
+    php index.php
+    try_files {path} /index.php
+    file_server
+}

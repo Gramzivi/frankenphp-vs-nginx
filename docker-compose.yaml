@@ -1,0 +1,26 @@
+services:
+
+  # FPM for nginx
+  app-fpm:
+    image: php:8.4-fpm
+    volumes:
+      - ./app:/var/www/html
+  # nginx
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./config/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./app:/var/www/html
+    ports:
+      - "8080:80"
+    depends_on:
+      - app-fpm
+
+  # FrankenPHP
+  frankenphp:
+    image: dunglas/frankenphp:latest
+    volumes:
+      - ./app:/app
+      - ./config/Caddyfile:/etc/frankenphp/Caddyfile:ro
+    ports:
+      - "8081:80"
